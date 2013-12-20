@@ -49,7 +49,7 @@ class Entry(object):
   def id(self,v):
     self._id = v
 
-  @prpperty
+  @property
   def processed_text(self):
     return self._processed_text
 
