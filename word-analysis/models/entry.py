@@ -1,3 +1,5 @@
+import nltk
+
 class Entry(object):
 
   @classmethod
@@ -47,13 +49,21 @@ class Entry(object):
   def id(self,v):
     self._id = v
 
+  @prpperty
+  def processed_text(self):
+    return self._processed_text
+
+  @processed_text.setter
+  def processed_text(self,v):
+     self._processed_text = v
+
   def save(self):
     return self.id
 
   def delete(self):
     return self.id
     
-  def process(self):
-    # pos tag, stem
-    return None
+  def process_text(self):
+    self.processed_text = nltk.pos_tag(nltk.word_tokenize(self.text))
+
     
