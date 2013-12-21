@@ -1,4 +1,5 @@
 import nltk
+import word_analysis.database.driver as db
 
 class Entry(object):
 
@@ -57,13 +58,21 @@ class Entry(object):
   def processed_text(self,v):
      self._processed_text = v
 
+  def to_database(self):
+    return {
+      'id': self.id,
+      'processed_text': self.processed_text,
+    }
+
   def save(self):
-    return self.id
+    db.save(self.id,self.to_database())
 
   def delete(self):
-    return self.id
+    db.delete(self.id)
     
   def process_text(self):
     self.processed_text = nltk.pos_tag(nltk.word_tokenize(self.text))
+    #self.processed_text = map(list,nltk.pos_tag(nltk.word_tokenize(self.text)))
+
 
     
