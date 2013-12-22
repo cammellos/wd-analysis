@@ -71,7 +71,8 @@ class Entry(object):
     db.delete(self.id)
     
   def process_text(self):
-    self.processed_text = nltk.pos_tag(nltk.word_tokenize(self.text))
+    if self.text:
+      self.processed_text = nltk.pos_tag(nltk.word_tokenize(self.text))
     #self.processed_text = map(list,nltk.pos_tag(nltk.word_tokenize(self.text)))
 
 

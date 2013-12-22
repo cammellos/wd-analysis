@@ -16,6 +16,10 @@ class FacebookCrawler(Crawler):
       e = Entry()
       e.text = post.get('message',None)
       e.user = post.get('from', None)
+      e.id = post['id']
+      e.process_text()
+      if e.text:
+        e.save()
       return e
    
 class FacebookQueryTermCrawler(FacebookCrawler):
