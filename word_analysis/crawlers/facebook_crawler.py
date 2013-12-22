@@ -2,10 +2,11 @@ import facebook as fb
 import itertools
 from word_analysis.models.entry import Entry
 from word_analysis.config.config import config
+from word_analysis.crawlers.crawler import Crawler
 
 default_token = config()['facebook']['app_user_token']
 
-class FacebookCrawler(object):
+class FacebookCrawler(Crawler):
    def __init__(self,token = default_token):
      self.api = fb.GraphAPI(token)
 
